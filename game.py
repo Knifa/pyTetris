@@ -62,8 +62,7 @@ class Game(object):
             # Flip the display.
             pygame.display.update()
             
-            # Reset the key presses
-            print self.key_presses
+            # Reset the key presses           
             self.key_presses = {}
             
             # Wait for the next frame, yoslice.
