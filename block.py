@@ -6,7 +6,7 @@ class Block(object):
             self.state = True
             #loads the image block.png from the root dir and converts it
             #for use with the current screen.
-            self.image = pygame.image.load('block.png').convert()
+            self.image = pygame.image.load('images/block.png').convert()
 		
         #taking parameters of self, x co-ord, y co-ord, and display screen.
         def draw(self, x, y, screen):
