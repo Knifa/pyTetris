@@ -28,6 +28,9 @@ class Game(object):
         
         # key presses for the current frame
         self.key_presses = {}
+        
+        # Timer business.
+        self.fps_timer = pygame.time.Clock()
 		
     def run(self):
 	    # The game should be running now!
@@ -46,8 +49,6 @@ class Game(object):
                     self.is_running = False
                 elif event.type == local.KEYDOWN:
                     self.key_presses[event.key] = True
-                elif event.type == local.KEYUP:
-                    del self.key_presses[event.key]
 			
 			# Update and draw the right thing depedning on the
 			# game state!
@@ -60,3 +61,12 @@ class Game(object):
 			
             # Flip the display.
             pygame.display.update()
+            
+            # Reset the key presses
+            print self.key_presses
+            self.key_presses = {}
+            
+            # Wait for the next frame, yoslice.
+            self.fps_timer.tick(60)
+            
+            
