@@ -1,13 +1,14 @@
 import pygame
+import pygame.locals as local
+
 
 class Menu(object):
     def __init__(self):
     	pass
 
     def update(self,game):
-	print game.key_presses
-	if "K_COMMA" in game.key_presses:
+	if local.K_COMMA in game.key_presses:
 		print "Yes!"
 
     def draw(self):
-	pass
+	surf = pygame.display.get_surface()
