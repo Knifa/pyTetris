@@ -60,7 +60,7 @@ class Game(object):
                 self.grid.update(self)
                 self.grid.draw()
 					
-            toms_block.draw()
+            toms_block.draw(0, 0, self.display)
 			
             # Flip the display.
             pygame.display.update()
