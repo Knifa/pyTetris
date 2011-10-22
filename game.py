@@ -58,7 +58,9 @@ class Game(object):
             elif self.state == STATE_GAME:
                 self.grid.update(self)
                 self.grid.draw()
-			
+
+            if local.K_m in self.key_pressses:
+	                    self.state = STATE_MENU
             # Flip the display.
             pygame.display.update()
             
