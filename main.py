@@ -1,43 +1,67 @@
 import pygame
 import pygame.locals as local
 
-import grid
+from grid import *
+from menu import *
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 
+STATE_MENU = 0
+STATE_GAME = 1
+
 class Game(object):
-	def __init__(self):
-		pygame.init()
+    def __init__(self):
+        pygame.init()
+
+        # Create our display.
+        self.display = pygame.display.set_mode(
+            (SCREEN_WIDTH, SCREEN_HEIGHT))
+            
+        # Game is running! Or not.
+        self.is_running = False
+        
+        # Current game state.
+        # self.state = STATE_MENU
+        self.state = STATE_GAME
+        
+        # key presses for the current frame
+        self.key_presses = {}
 		
-		# Create our display.
-		self.display = pygame.display.set_mode(
-			(SCREEN_WIDTH, SCREEN_HEIGHT))
-		
-		# Game is running! Or not.
-		self.is_running = False
-		
-	def run(self):
+    def run(self):
 	    # The game should be running now!
         self.is_running = True
 		
-		# Create a new game grid.
-		self.grid = Grid()
+		# Create our main game objects.
+        self.menu = Menu()
+        self.grid = Grid()
 		
 		# Loop while the game is running, obviously
-		while self.is_running:
+        while self.is_running:
 			# Read in SDL events.
-			for event in pygame.event.get():
-				if event.type == local.QUIT:
+            for event in pygame.event.get():
+                if event.type == local.QUIT:
 					# Window close event.
-					self.is_running = False
+                    self.is_running = False
+                elif event.type == local.KEYDOWN:
+                    self.key_presses[event.key] = True
+                elif event.type == local.KEYUP:
+                    del self.key_presses[event.key]
 			
-			# Update and draw the grid.
-			grid.update(self)
-			grid.draw()
+			# Update and draw the right thing depedning on the
+			# game state!
+            if self.state == STATE_MENU:
+			    self.menu.update(self)
+			    self.menu.draw()
+            elif self.state == STATE_GAME:
+                self.grid.update(self)
+                self.grid.draw()
 					
-			# Flip the display.
-			pygame.display.update()
+            # Flip the display.
+            pygame.display.update()
+            
+            # Reset the key presses
+            print self.key_presses
 	
 game = Game()
 game.run()
