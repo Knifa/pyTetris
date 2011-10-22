@@ -3,6 +3,7 @@ import pygame.locals as local
 
 from grid import *
 from menu import *
+from block import *
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -35,6 +36,8 @@ class Game(object):
 		# Create our main game objects.
         self.menu = Menu()
         self.grid = Grid()
+        
+        toms_block = Block()
 		
 		# Loop while the game is running, obviously
         while self.is_running:
@@ -57,6 +60,8 @@ class Game(object):
                 self.grid.update(self)
                 self.grid.draw()
 					
+            toms_block.draw()
+			
             # Flip the display.
             pygame.display.update()
             
