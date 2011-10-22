@@ -23,8 +23,8 @@ class Game(object):
         self.is_running = False
         
         # Current game state.
-        # self.state = STATE_MENU
-        self.state = STATE_GAME
+        self.state = STATE_MENU
+        #self.state = STATE_GAME
         
         # key presses for the current frame
         self.key_presses = {}
@@ -60,6 +60,3 @@ class Game(object):
 			
             # Flip the display.
             pygame.display.update()
-            
-            # Reset the key presses
-            print self.key_presses
