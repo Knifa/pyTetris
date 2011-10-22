@@ -7,9 +7,9 @@ class Block(object):
             self.state = True
             #loads the image block.png from the root dir and converts it
             #for use with the current screen.
-            blockParty = ['images/block1.png','images/block2.png','images/block3.png','images/block4.png','images/block5.png','images/block6.png']
+            blockList = ['images/block1.png','images/block2.png','images/block3.png','images/block4.png','images/block5.png','images/block6.png']
 
-            self.image = pygame.image.load(blockList[randint(0,5)]).convert()
+            self.image = pygame.image.load(blockList[random.randint(0,5)]).convert()
 		
         #taking parameters of self, x co-ord, y co-ord, and display screen.
         def draw(self, x, y, screen):
