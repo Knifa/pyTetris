@@ -20,7 +20,9 @@ class Block(object):
             self.image = pygame.image.load(blockList[color]).convert()
 		
         #taking parameters of self, x co-ord, y co-ord, and display screen.
-        def draw(self, x, y, screen):
+        def draw(self, x, y):
+                screen = pygame.display.get_surface()
+                
                 #draws the block at location (x,y) on display screen.
                 screen.blit(self.image, (x,y))
                 
