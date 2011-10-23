@@ -42,6 +42,7 @@ class Game(object):
 
 		# Start music
 	pygame.mixer.music.load('music/pretty9000.mp3')
+	pygame.mixer.music.play(-1, 0.0)
 		
 		# Loop while the game is running, obviously
         while self.is_running:
