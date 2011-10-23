@@ -25,6 +25,7 @@ class Game(object):
         # Current game state.
         #self.state = STATE_MENU
         self.state = STATE_GAME
+	self.firstTime = 1
         
         # key presses for the current frame
         self.key_presses = {}

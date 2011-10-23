@@ -3,9 +3,13 @@ import pygame.locals as local
 
 class Menu(object):
     def __init__(self):
+	
+	#Set default menu option
     	self.Resume = 1
 	self.Options = 0
 	self.Quit = 0
+	
+	#Load all menu images
 	self.bg = pygame.image.load('images/menubg.png')
 	self.ResumePressed = pygame.image.load('images/button1.png')
 	self.ResumeUnpressed = pygame.image.load('images/button2.png')
@@ -14,7 +18,11 @@ class Menu(object):
 	self.QuitPressed = pygame.image.load('images/button1.png')
 	self.QuitUnpressed = pygame.image.load('images/button2.png')
 	self.screen = pygame.display.get_surface()
+	
+	
     def update(self,game):
+
+	#Highlight appropriate menu items
 	if self.Resume == 1:
 		self.bg.blit(self.ResumePressed, (240,240))
 		self.bg.blit(self.OptionsUnpressed, (240,304))
@@ -27,6 +35,9 @@ class Menu(object):
 		self.bg.blit(self.ResumeUnpressed, (240,240))
 		self.bg.blit(self.OptionsUnpressed, (240,304))
 		self.bg.blit(self.QuitPressed, (240, 368))
+
+	#Check for key presses and alter menu highlight accordingly
+	#If action button is pressed, perform menu function
 	if local.K_UP in game.key_presses:
 		if self.Options == 1:
 			self.Resume = 1
@@ -44,9 +55,11 @@ class Menu(object):
 	elif local.K_x in game.key_presses:
 		if self.Resume == 1:
 			game.state = 1
+			game.firstTime = 0
 		elif self.Quit == 1:
 			quit()
 
     def draw(self):
+	#Draw background
 	self.screen.blit(self.bg, (1,1))
 	
