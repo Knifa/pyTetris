@@ -28,10 +28,10 @@ class Grid(object):
         for i in range(4):
             self.falling_blocks.append(Block(color))
         
-        self.blocks[1][2] = self.falling_blocks[0]
-        self.blocks[1][3] = self.falling_blocks[1]
-        self.blocks[1][4] = self.falling_blocks[2]
-        self.blocks[0][5] = self.falling_blocks[3]
+        self.blocks[1][0] = self.falling_blocks[0]
+        self.blocks[1][1] = self.falling_blocks[1]
+        self.blocks[1][2] = self.falling_blocks[2]
+        self.blocks[0][1] = self.falling_blocks[3]
         
         self.bg = pygame.image.load('images/bg.png').convert()
         
@@ -113,13 +113,30 @@ class Grid(object):
                             self.blocks[row][column] = None           
                             
     def rotate_right(self):
-        pass
-    
+        new_list = []
+        for row in range(GRID_ROWS):
+            row_list = []
+            for column in range(GRID_COLUMNS):
+                row_list.append(None)
+            new_list.append(row_list)
+            
+        for row in range(GRID_ROWS-1,-1,-1):
+            for column in range(GRID_COLUMNS-1,-1,-1):
+                if self.blocks[row][column] in self.falling_blocks:
+                    new_list[column][row] = self.blocks[row][column]
+                    #new_list[row][column] = None
+                elif self.blocks[row][column]:
+                    new_list[row][column] = self.blocks[row][column]
+                    
+        self.blocks = new_list
+                
     def update(self, game):
         if local.K_LEFT in game.key_presses:
             self.move_left()
         elif local.K_RIGHT in game.key_presses:
             self.move_right()
+        elif local.K_a in game.key_presses:
+            self.rotate_right()
             
         # check if it's time to move stuff down
         if pygame.time.get_ticks() >= self.falling_time:
