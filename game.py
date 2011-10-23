@@ -23,8 +23,7 @@ class Game(object):
         self.is_running = False
         
         # Current game state.
-        #self.state = STATE_MENU
-        self.state = STATE_GAME
+        self.state = STATE_MENU
 	self.firstTime = 1
         
         # key presses for the current frame

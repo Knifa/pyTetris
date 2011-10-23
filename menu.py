@@ -11,6 +11,8 @@ class Menu(object):
 	
 	#Load all menu images
 	self.bg = pygame.image.load('images/menubg.png')
+	self.StartPressed = pygame.image.load('images/button4a.png')
+	self.StartUnpressed = pygame.image.load('images/button4b.png')
 	self.ResumePressed = pygame.image.load('images/button1a.png')
 	self.ResumeUnpressed = pygame.image.load('images/button1b.png')
 	self.OptionsPressed = pygame.image.load('images/button2a.png')
@@ -21,18 +23,26 @@ class Menu(object):
 	
 	
     def update(self,game):
+	
+	#Check if first time for start/resume differentiation
+	if game.firstTime == 1:
+		topButtonPressed = self.StartPressed
+		topButtonUnpressed = self.StartUnpressed
+	else:
+		topButtonPressed = self.ResumePressed
+		topButtonUnpressed = self.ResumeUnpressed
 
 	#Highlight appropriate menu items
 	if self.Resume == 1:
-		self.bg.blit(self.ResumePressed, (240,240))
+		self.bg.blit(topButtonPressed, (240,240))
 		self.bg.blit(self.OptionsUnpressed, (240,304))
 		self.bg.blit(self.QuitUnpressed, (240,368))
 	elif self.Options == 1:
-		self.bg.blit(self.ResumeUnpressed, (240,240))
+		self.bg.blit(topButtonUnpressed, (240,240))
 		self.bg.blit(self.OptionsPressed, (240,304))
 		self.bg.blit(self.QuitUnpressed, (240,368))
 	else:
-		self.bg.blit(self.ResumeUnpressed, (240,240))
+		self.bg.blit(topButtonUnpressed, (240,240))
 		self.bg.blit(self.OptionsUnpressed, (240,304))
 		self.bg.blit(self.QuitPressed, (240, 368))
 
