@@ -39,6 +39,9 @@ class Game(object):
 		# Create our main game objects.
         self.menu = Menu()
         self.grid = Grid()
+
+		# Start music
+	pygame.mixer.music.load('music/pretty9000.mp3')
 		
 		# Loop while the game is running, obviously
         while self.is_running:
