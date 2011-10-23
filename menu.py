@@ -11,12 +11,12 @@ class Menu(object):
 	
 	#Load all menu images
 	self.bg = pygame.image.load('images/menubg.png')
-	self.ResumePressed = pygame.image.load('images/button1.png')
-	self.ResumeUnpressed = pygame.image.load('images/button2.png')
-	self.OptionsPressed = pygame.image.load('images/button1.png')
-	self.OptionsUnpressed = pygame.image.load('images/button2.png')
-	self.QuitPressed = pygame.image.load('images/button1.png')
-	self.QuitUnpressed = pygame.image.load('images/button2.png')
+	self.ResumePressed = pygame.image.load('images/button1a.png')
+	self.ResumeUnpressed = pygame.image.load('images/button1b.png')
+	self.OptionsPressed = pygame.image.load('images/button2a.png')
+	self.OptionsUnpressed = pygame.image.load('images/button2b.png')
+	self.QuitPressed = pygame.image.load('images/button3a.png')
+	self.QuitUnpressed = pygame.image.load('images/button3b.png')
 	self.screen = pygame.display.get_surface()
 	
 	
